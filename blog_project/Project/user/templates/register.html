@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Register
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="" method="POST" class="border p-4">
+                {% csrf_token %}
+                <h2 class="mb-4">Registration Form</h2>
+                <div class="form-group mb-3">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+                <div class="form-group mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                <div class="form-group  mb-3">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group ">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                </div>
+                <button type="submit" class="btn btn-outline-secondary mt-2 w-100 mt-5">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

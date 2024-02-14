@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-5">Search Results</h1>
+    {% for post in object_list %}
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary-emphasis"> {{post.author}} </strong>
+          <h3 class="mb-0"> {{post.title}} </h3>
+          <div class="mb-1 text-body-secondary"> {{post.created_on}} </div>
+          <p class="card-text mb-auto"> {{post.content|slice:"200" }} </p>
+          <a href="{% url 'post_list' post.slug %}" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+          </a>
+        </div>
+          {% if post.image %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-25">
+          {% endif %}
+        </div>
+    {% empty %}
+    <p>No results found.</p>
+    {% endfor %}
+</div>
+
+<a class="btn btn-secondary ms-5" href="{% url 'home' %}">Back To Main Page</a>
+
+{% endblock %}
